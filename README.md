@@ -27,13 +27,11 @@ products = [
 
 print(products)
 
-# an infinite loop! you can press control+c to cancel the program if/when it gets stuck...
-while True:
-    # capturing user input and storing in a variable
-    user_input = input("Please input a product identifier, or 'DONE' if there are no more items: ")
-    # demonstrating ability to recognize what the input was, although you might also want to check its datatype
-    print("YOUR INPUT WAS: " + user_input)
-
 selected_id = input("Please input a product identifier: ") #> "9" (string)
-print(selected_id)
-print(type(selected_id))
+matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+matching_product = matching_products[0]
+print(matching_product)
+print(type(matching_product))
+print("SELECTED_PRODUCT: " + matching_product["name"] + "" + str(matching_product["price"]
+
+
