@@ -1,5 +1,8 @@
-# shopping_cart.py
+ # shopping_cart.py
 
+import datetime
+
+# Products based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -21,17 +24,51 @@ products = [
     {"id":18, "name": "Pizza for One Suprema Frozen Pizza", "department": "frozen", "aisle": "frozen pizza", "price": 12.50},
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
-] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-# TODO: write some Python code here to produce the desired functionality...
+t = datetime.datetime.now()
+print(type(t))
+print(t)
+print(t.strftime("%Y-%m-%d %I:%M %p"))
+#convert to USD
 
-print(products)
 
-selected_id = input("Please input a product identifier: ") #> "9" (string)
-matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-matching_product = matching_products[0]
-print(matching_product)
-print(type(matching_product))
-print("SELECTED_PRODUCT: " + matching_product["name"] + "" + str(matching_product["price"]
+subtotal_price = 0
+selected_ids = []
+tax = subtotal_price * tax_rate
+total_price = subtotal_price + tax
+def to_usd(my_price):
+    return "${0:,.2f}".format(my_price)
+tax_rate = 0.06 
+
+print("---------------------------")
+print("Coulby's Groceries")
+print("WWW.Coulby's-GROCERIES.COM")
+print("---------------------------")
+print("CHECKOUT AT: " + t.strftime("%Y-%m-%d %I:%M %p"))
+print("---------------------------")
+
+
+while True:
+    selected_id = input("Please input a product identifier, or 'DONE' if there are no more items: ")
+    print("YOUR INPUT WAS: " + user_input)
+    if selected_id == "DONE": 
+        break
+    else:
+        selected_ids.append(selected_id) 
+
+for selected_id in selected_ids:
+    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+    matching_product = matching_products[0]
+    subtotal_price = subtotal_price + matching_product["price"]
+    print("SELECTED PRODUCT: " + matching_product["name"] + " (" + to_usd(matching_product["price"])+ ")")
+
+    
+print("---------------------------")
+print("SUBTOTAL: " + to_usd(subtotal_price))
+print("TAX: " + to_usd(tax))
+print("TAX: " + to_usd(total_price))
+print("---------------------------")
+print("THANK YOU FOR SHOPPING HERE AND HAVE A NICE DAY"))
+print("---------------------------")
 
 
